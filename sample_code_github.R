@@ -5,12 +5,15 @@ require(lubridate)
 require(lme4)
 require(lmerTest)
 
+### sample mixed-effect model
+
 mem_annual = lmer(MMSE_score ~ (1|ID) + yr_PM + yr_oz + yr_no2 + age + sex + factor(ethnicity)  +
               smoke + drink + exercise + year_education + HBP + BMI + diabetes + urban +
               heart_disease + past_smoke + past_drink , data = dat2)
 
 summary(mem_annual)
 
+### sample logistic regression model
 
 glm1 = glm(CI ~ yr_no2 + yr_oz + yr_PM + age + sex + factor(ethnicity) + time + 
              smoke + drink + exercise + year_education + HBP + BMI + diabetes + urban+
@@ -18,6 +21,7 @@ glm1 = glm(CI ~ yr_no2 + yr_oz + yr_PM + age + sex + factor(ethnicity) + time +
 
 summary(glm1)
 
+### sample concentration-response relationship and plotting code
 
 require(mgcv)
 
